@@ -80,7 +80,13 @@ public final class POSTHttpServletRequestWrapper extends QueryStringHttpServletR
                 sb.append(buffer, 0, c);
             }
 
-            parseFormData(sb.toString());
+            if (sb.length() < 3) {
+                @SuppressWarnings("unchecked")
+                Map<String, String[]> parameterMap = request.getParameterMap();
+                getParameterMap().putAll(parameterMap);
+            } else {
+                parseFormData(sb.toString());
+            }
         }
     }
 

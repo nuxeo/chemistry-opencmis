@@ -33,21 +33,23 @@
     <artifactId>chemistry-opencmis-server-bindings</artifactId>
     <name>OpenCMIS Server Implementation</name>
     <packaging>jar</packaging>
+    <version>0.12.0-NX1</version>
 
     <properties>
         <parentBasedir>../../</parentBasedir>
+        <opencmis.project.version>0.12.0</opencmis.project.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>chemistry-opencmis-commons-api</artifactId>
-            <version>${project.version}</version>
+            <version>${opencmis.project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>chemistry-opencmis-commons-impl</artifactId>
-            <version>${project.version}</version>
+            <version>${opencmis.project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jvnet.mimepull</groupId>
@@ -81,7 +83,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>chemistry-opencmis-server-support</artifactId>
-            <version>${project.version}</version>
+            <version>${opencmis.project.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>
