@@ -32,7 +32,7 @@
     <groupId>org.apache.chemistry.opencmis</groupId>
     <artifactId>chemistry-opencmis</artifactId>
     <name>Apache Chemistry OpenCMIS</name>
-    <version>1.1.1-NX01-SNAPSHOT</version>
+    <version>1.1.1-NX01</version>
     <packaging>pom</packaging>
 
     <organization>

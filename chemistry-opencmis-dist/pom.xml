@@ -24,7 +24,7 @@
     <parent>
         <artifactId>chemistry-opencmis</artifactId>
         <groupId>org.apache.chemistry.opencmis</groupId>
-        <version>1.1.1-NX01-SNAPSHOT</version>
+        <version>1.1.1-NX01</version>
         <relativePath>../</relativePath>
     </parent>
 
