@@ -18,7 +18,7 @@
  */
 package org.apache.chemistry.opencmis.bridge;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.chemistry.opencmis.commons.server.CallContext;
 import org.apache.chemistry.opencmis.commons.spi.AclService;
