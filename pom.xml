@@ -420,7 +420,7 @@
                         <configuration>
                             <rules>
                                 <requireJavaVersion>
-                                    <version>[12,)</version>
+                                    <version>[11,)</version>
                                 </requireJavaVersion>
                                 <requireMavenVersion>
                                     <version>[3.5,)</version>
