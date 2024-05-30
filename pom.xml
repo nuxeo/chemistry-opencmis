@@ -29,23 +29,19 @@
 
     <!-- Project Information -->
 
-    <groupId>org.apache.chemistry.opencmis</groupId>
+    <groupId>org.nuxeo.chemistry.opencmis</groupId>
     <artifactId>chemistry-opencmis</artifactId>
     <name>Apache Chemistry OpenCMIS</name>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <organization>
-        <name>The Apache Software Foundation</name>
-        <url>https://www.apache.org/</url>
+        <name>Nuxeo</name>
+        <url>http://www.nuxeo.com</url>
     </organization>
 
-    <url>https://chemistry.apache.org/java/</url>
+    <url>http://www.nuxeo.com/en/products</url>
 
-    <ciManagement>
-        <system>Apache Build Server</system>
-        <url>https://builds.apache.org/view/A-D/view/Chemistry/</url>
-    </ciManagement>
     <inceptionYear>2009</inceptionYear>
     <description>
         Apache Chemistry OpenCMIS is an open source implementation of the OASIS CMIS specification.
@@ -58,24 +54,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-    <scm>
-        <connection>scm:svn:https://svn.apache.org/repos/asf/chemistry/opencmis/trunk</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/chemistry/opencmis/trunk</developerConnection>
-        <url>https://svn.apache.org/viewvc/chemistry/opencmis/trunk</url>
-    </scm>
-
-    <distributionManagement>
-        <site>
-            <id>${site.staging.id}</id>
-            <url>${site.staging.url}</url>
-        </site>
-    </distributionManagement>
-
-    <issueManagement>
-        <system>Jira</system>
-        <url>https://issues.apache.org/jira/browse/CMIS</url>
-    </issueManagement>
 
     <mailingLists>
         <mailingList>
@@ -124,28 +102,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compile.source>1.8</maven.compile.source>
-        <maven.compile.target>1.8</maven.compile.target>
+        <maven.compile.release>11</maven.compile.release>
         <docs.start.url>https://chemistry.apache.org/java/opencmis.html</docs.start.url>
         <docs.download.directory>${project.build.directory}/downloaded-site</docs.download.directory>
-        <!--
-            | Here we configure Maven documentation site (incl. Javadocs) deployment
-            |
-            | By default site is deployed to:
-            | https://svn.apache.org/repos/asf/chemistry/site/trunk/content/java/${site.label}/maven/
-            | where site.label = project.version
-
-            | For details/changes see https://chemistry.apache.org/java/documentation-lifecycle.html
-            |
-            | Note: Site label (or any other property like site.staging.url) can be overriden on the command line to deploy to distinct location during site development
-            -->
-        <site.label>${project.version}</site.label>
-        <site.staging.id>apache-site-staging</site.staging.id>
-        <!-- We're using wagon-svn to deploy directly to svn.apache.org to feed CMS with generated docs -->
-        <site.staging.protocol>svn:https</site.staging.protocol>
-        <site.staging.host>svn.apache.org</site.staging.host>
-        <site.staging.folder>/repos/asf/chemistry/site/trunk/content/java/${site.label}/maven</site.staging.folder>
-        <site.staging.url>${site.staging.protocol}://${site.staging.host}${site.staging.folder}</site.staging.url>
         <parentBasedir>${project.basedir}</parentBasedir>
 
         <woodstox.version>5.1.0</woodstox.version>
@@ -218,11 +177,6 @@
                     <version>3.1.0</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.5.3</version>
-                </plugin>
-                <plugin>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>3.1.0</version>
                 </plugin>
@@ -258,26 +212,6 @@
                     <timestampFormat>{0,date,yyyy-MM-dd'T'HH:mm:ssZ}</timestampFormat>
                 </configuration>
             </plugin>
-            <!-- Working, but not attached to the deployment.
-            Blocked on http://jira.codehaus.org/browse/MINSTALL-82
-            <plugin>
-                <groupId>net.ju-n.maven.plugins</groupId>
-                <artifactId>checksum-maven-plugin</artifactId>
-                <version>1.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>artifacts</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <algorithms>
-                        <algorithm>SHA-256</algorithm>
-                    </algorithms>
-                </configuration>
-            </plugin>
-             -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -286,8 +220,8 @@
                     <attachClasses>true</attachClasses>
                     <archive>
                         <manifestEntries>
-                            <X-Compile-Source-JDK>${maven.compile.source}</X-Compile-Source-JDK>
-                            <X-Compile-Target-JDK>${maven.compile.target}</X-Compile-Target-JDK>
+                            <X-Compile-Source-JDK>${maven.compile.release}</X-Compile-Source-JDK>
+                            <X-Compile-Target-JDK>${maven.compile.release}</X-Compile-Target-JDK>
                             <X-Apache-SVN-Revision>${buildNumber}</X-Apache-SVN-Revision>
                             <Implementation-Title>${project.name}</Implementation-Title>
                             <Implementation-Version>${project.version}</Implementation-Version>
@@ -298,30 +232,11 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <useReleaseProfile>false</useReleaseProfile>
-                    <!-- TODO: Add autogenerated JIRA release notes -->
-                    <preparationGoals>clean install</preparationGoals>
-                    <goals>deploy site</goals>
-                    <arguments>-Papache-release</arguments>
-                    <!-- Add this profile to also deploy the site upon release -->
-                    <!-- <arguments>-Papache-release,site-deploy</arguments> -->
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <username>${apache.username}</username>
-                    <password>${apache.password}</password>
-                    <!-- To lock files during release -->
-                    <useEditMode>true</useEditMode>
-                </configuration>
-            </plugin>
-            <plugin>
                 <inherited>true</inherited>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <target>${maven.compile.target}</target>
-                    <source>${maven.compile.source}</source>
+                    <release>${maven.compile.release}</release>
                     <encoding>UTF-8</encoding>
                     <fork>true</fork>
                 </configuration>
@@ -383,8 +298,8 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <X-Compile-Source-JDK>${maven.compile.source}</X-Compile-Source-JDK>
-                            <X-Compile-Target-JDK>${maven.compile.target}</X-Compile-Target-JDK>
+                            <X-Compile-Source-JDK>${maven.compile.release}</X-Compile-Source-JDK>
+                            <X-Compile-Target-JDK>${maven.compile.release}</X-Compile-Target-JDK>
                             <X-Apache-SVN-Revision>${buildNumber}</X-Apache-SVN-Revision>
                             <Implementation-Title>${project.name}</Implementation-Title>
                             <Implementation-Version>${project.version}</Implementation-Version>
@@ -397,13 +312,6 @@
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.google.code.maven-svn-wagon</groupId>
-                        <artifactId>maven-svn-wagon</artifactId>
-                        <version>1.4</version>
-                    </dependency>
-                </dependencies>
                 <configuration>
                     <deployAtEnd>false</deployAtEnd>
                 </configuration>
@@ -420,7 +328,7 @@
                         <configuration>
                             <rules>
                                 <requireJavaVersion>
-                                    <version>[12,)</version>
+                                    <version>[11,)</version>
                                 </requireJavaVersion>
                                 <requireMavenVersion>
                                     <version>[3.5,)</version>
@@ -468,32 +376,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <tags>
-                        <tag>
-                            <name>cmis</name>
-                            <placement>a</placement>
-                            <head>CMIS:</head>
-                        </tag>
-                    </tags>
-                    <locale>en</locale>
-                    <encoding>utf-8</encoding>
-                    <source>8</source>
-                    <doclint>accessibility,html,reference,syntax</doclint>
-                </configuration>
-            </plugin>
         </plugins>
-        <extensions>
-            <extension>
-                <groupId>com.google.code.maven-svn-wagon</groupId>
-                <artifactId>maven-svn-wagon</artifactId>
-                <version>1.4</version>
-            </extension>
-        </extensions>
     </build>
 
     <dependencies>
@@ -510,219 +393,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.22.2</version>
-                <configuration>
-                    <aggregate>true</aggregate>
-                    <reportsDirectories>
-                        <reportsDirectory>${project.build.directory}/surefire-reports/</reportsDirectory>
-                        <reportsDirectory>${project.build.directory}/failsafe-reports/</reportsDirectory>
-                    </reportsDirectories>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.0.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.0.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <inherited>false</inherited>
-                <reportSets>
-                    <reportSet>
-                        <id>aggregate</id>
-                        <reports>
-                            <report>aggregate</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-                <configuration>
-                    <doctitle>Apache Chemistry OpenCMIS ${project.version}</doctitle>
-                    <windowtitle>Apache Chemistry OpenCMIS ${project.version}</windowtitle>
-
-                    <sourcepath>
-                        ${basedir}/chemistry-opencmis-commons/chemistry-opencmis-commons-api/src/main/java:
-                        ${basedir}/chemistry-opencmis-commons/chemistry-opencmis-commons-impl/src/main/java:
-                        ${basedir}/chemistry-opencmis-client/chemistry-opencmis-client-api/src/main/java:
-                        ${basedir}/chemistry-opencmis-client/chemistry-opencmis-client-bindings/src/main/java:
-                        ${basedir}/chemistry-opencmis-client/chemistry-opencmis-client-impl/src/main/java:
-                        ${basedir}/chemistry-opencmis-server/chemistry-opencmis-server-bindings/src/main/java:
-                        ${basedir}/chemistry-opencmis-server/chemistry-opencmis-server-support/src/main/java:
-                        ${basedir}/chemistry-opencmis-server/chemistry-opencmis-server-async/src/main/java:
-                        ${basedir}/chemistry-opencmis-bridge/chemistry-opencmis-bridge/src/main/java:
-                        ${basedir}/chemistry-opencmis-test/chemistry-opencmis-test-tck/src/main/java
-                    </sourcepath>
- 
-                    <groups>
-                        <group>
-                            <title>OpenCMIS Client API</title>
-                            <packages>org.apache.chemistry.opencmis.client:org.apache.chemistry.opencmis.client.api:org.apache.chemistry.opencmis.client.util</packages>
-                        </group>
-                        <group>
-                            <title>OpenCMIS Commons API</title>
-                            <packages>org.apache.chemistry.opencmis.commons:org.apache.chemistry.opencmis.commons.*</packages>
-                        </group>
-                        <group>
-                            <title>OpenCMIS Bindings SPI</title>
-                            <packages>org.apache.chemistry.opencmis.client.bindings</packages>
-                        </group>
-                        <group>
-                            <title>OpenCMIS Server</title>
-                            <packages>org.apache.chemistry.opencmis.commons.server:org.apache.chemistry.opencmis.commons.impl.server:org.apache.chemistry.opencmis.server.support:org.apache.chemistry.opencmis.server.support.wrapper:org.apache.chemistry.opencmis.server.support.query:org.apache.chemistry.opencmis.server.filter:org.apache.chemistry.opencmis.server.shared</packages>
-                        </group>
-                        <group>
-                            <title>OpenCMIS Server (async)</title>
-                            <packages>org.apache.chemistry.opencmis.server.async</packages>
-                        </group>
-                        <group>
-                            <title>OpenCMIS Bridge</title>
-                            <packages>org.apache.chemistry.opencmis.bridge*</packages>
-                        </group>
-                        <group>
-                            <title>OpenCMIS TCK</title>
-                            <packages>org.apache.chemistry.opencmis.tck*</packages>
-                        </group>
-                    </groups>
-
-                    <sourceFileExcludes>
-                        <exclude>**/CmisQl*</exclude>
-                        <exclude>**/CmisQueryWalk*</exclude>
-                        <exclude>**/TextSearch*</exclude>
-                        <exclude>org/apache/chemistry/opencmis/commons/impl/*</exclude>
-                        <exclude>org/apache/chemistry/opencmis/commons/impl/dataobjects/**</exclude>
-                        <exclude>org/apache/chemistry/opencmis/commons/impl/json/**</exclude>
-                        <exclude>org/apache/chemistry/opencmis/commons/impl/jaxb/**</exclude>
-                        <exclude>org/apache/chemistry/opencmis/commons/impl/server/ObjectInfoImpl*</exclude>
-                        <exclude>org/apache/chemistry/opencmis/commons/impl/server/RenditionInfoImpl*</exclude>
-                        <exclude>org/apache/chemistry/opencmis/commons/impl/server/LinkInfoImp*</exclude>
-                        <exclude>org/apache/chemistry/opencmis/client/runtime/**</exclude>
-                        <exclude>org/apache/chemistry/opencmis/client/bindings/impl/**</exclude>
-                        <exclude>org/apache/chemistry/opencmis/client/bindings/cache/**</exclude>
-                        <exclude>org/apache/chemistry/opencmis/client/bindings/spi/**</exclude>
-                        <exclude>org/apache/chemistry/opencmis/server/impl/**</exclude>
-                        <exclude>org/apache/chemistry/opencmis/server/shared/**</exclude>
-                        <exclude>org/apache/chemistry/opencmis/server/support/filter/**</exclude>
-                        <exclude>org/apache/chemistry/opencmis/server/async/impl/**</exclude>
-                    </sourceFileExcludes>
-                    <tags>
-                        <tag>
-                            <name>cmis</name>
-                            <placement>a</placement>
-                            <head>CMIS:</head>
-                        </tag>
-                    </tags>
-                    <locale>en</locale>
-                    <encoding>utf-8</encoding>
-                    <source>8</source>
-                    <doclint>accessibility,html,reference,syntax</doclint>
-                    <additionalOptions>
-                    	<additionalOption>--add-stylesheet ${parentBasedir}/src/main/javadoc/chemistry-javadoc.css</additionalOption>
-                    </additionalOptions>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
-
-    <profiles>
-        <profile>
-            <id>coverage</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>${jacoco.version}</version>
-                        <executions>
-                            <execution>
-                                <id>default-prepare-agent</id>
-                                <goals>
-                                    <goal>prepare-agent</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>default-report</id>
-                                <goals>
-                                    <goal>report</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <!--
-            Extending the default -Papache-release profile used *only*
-            during releases
-        -->
-        <profile>
-            <id>apache-release</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <!--
-                        We want to package up licenses
-                        resources in the JARs produced
-                    -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-remote-resources-plugin</artifactId>
-                        <configuration>
-                            <appendedResourcesDirectory>${parentBasedir}/src/main/appended-resources</appendedResourcesDirectory>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <configuration>
-                            <webResources>
-                                <resource>
-                                    <!-- this is relative to the pom.xml directory -->
-                                    <directory>${project.build.directory}/maven-shared-archive-resources</directory>
-                                    <includes>
-                                        <include>META-INF/*</include>
-                                    </includes>
-                                </resource>
-                            </webResources>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>site-deploy</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-site-plugin</artifactId>
-                        <inherited>false</inherited>
-                        <executions>
-                            <execution>
-                                <id>site-deploy-toplevel</id>
-                                <goals>
-                                    <goal>deploy</goal>
-                                </goals>
-                                <phase>site</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
