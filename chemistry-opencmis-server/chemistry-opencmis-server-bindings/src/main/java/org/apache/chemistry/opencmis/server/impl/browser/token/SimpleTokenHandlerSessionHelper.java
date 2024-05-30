@@ -21,8 +21,8 @@ package org.apache.chemistry.opencmis.server.impl.browser.token;
 import java.net.URL;
 import java.security.SecureRandom;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 public class SimpleTokenHandlerSessionHelper {
 

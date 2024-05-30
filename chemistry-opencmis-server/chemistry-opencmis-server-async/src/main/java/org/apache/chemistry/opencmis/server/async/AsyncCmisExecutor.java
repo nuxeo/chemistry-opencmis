@@ -20,7 +20,7 @@ package org.apache.chemistry.opencmis.server.async;
 
 import java.util.concurrent.RejectedExecutionException;
 
-import javax.servlet.AsyncContext;
+import jakarta.servlet.AsyncContext;
 
 /**
  * Implementations of this interface are responsible for executing a CMIS

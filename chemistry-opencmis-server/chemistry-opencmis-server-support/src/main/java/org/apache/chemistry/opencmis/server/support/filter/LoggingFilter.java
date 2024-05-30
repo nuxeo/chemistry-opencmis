@@ -33,23 +33,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpServletResponseWrapper;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ReadListener;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.WriteListener;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponseWrapper;
 
 import org.apache.chemistry.opencmis.commons.exceptions.CmisRuntimeException;
 import org.apache.chemistry.opencmis.commons.impl.DateTimeHelper;
@@ -416,6 +419,21 @@ public class LoggingFilter implements Filter {
             return ch;
         }
 
+        @Override
+        public boolean isFinished() {
+            return is.isFinished();
+        }
+
+        @Override
+        public boolean isReady() {
+            return is.isReady();
+        }
+
+        @Override
+        public void setReadListener(ReadListener readListener) {
+            is.setReadListener(readListener);
+        }
+
         public String getPayload() {
             try {
                 return baous.toString(IOUtils.UTF8);
@@ -631,6 +649,16 @@ public class LoggingFilter implements Filter {
         public void write(int ch) throws IOException {
             baous.write(ch);
             os.write(ch);
+        }
+
+        @Override
+        public boolean isReady() {
+            return os.isReady();
+        }
+
+        @Override
+        public void setWriteListener(WriteListener writeListener) {
+            os.setWriteListener(writeListener);
         }
     }
 }

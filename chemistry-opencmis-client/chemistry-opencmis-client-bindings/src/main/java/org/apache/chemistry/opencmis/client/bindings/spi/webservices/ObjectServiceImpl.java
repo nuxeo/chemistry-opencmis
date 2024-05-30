@@ -78,8 +78,8 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(getCmisVersion(repositoryId), "createDocument");
 
         try {
-            javax.xml.ws.Holder<String> objectId = new javax.xml.ws.Holder<String>();
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<String> objectId = new jakarta.xml.ws.Holder<String>();
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.createDocument(repositoryId, convert(properties), folderId, convert(contentStream, false),
                     convert(EnumVersioningState.class, versioningState), policies, convert(addACEs),
@@ -105,8 +105,8 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
                 "createDocumentFromSource");
 
         try {
-            javax.xml.ws.Holder<String> objectId = new javax.xml.ws.Holder<String>();
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<String> objectId = new jakarta.xml.ws.Holder<String>();
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.createDocumentFromSource(repositoryId, sourceId, convert(properties), folderId,
                     convert(EnumVersioningState.class, versioningState), policies, convert(addACEs),
@@ -130,8 +130,8 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(getCmisVersion(repositoryId), "createFolder");
 
         try {
-            javax.xml.ws.Holder<String> objectId = new javax.xml.ws.Holder<String>();
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<String> objectId = new jakarta.xml.ws.Holder<String>();
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.createFolder(repositoryId, convert(properties), folderId, policies, convert(addACEs),
                     convert(removeACEs), portExtension, objectId);
@@ -154,8 +154,8 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(getCmisVersion(repositoryId), "createPolicy");
 
         try {
-            javax.xml.ws.Holder<String> objectId = new javax.xml.ws.Holder<String>();
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<String> objectId = new jakarta.xml.ws.Holder<String>();
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.createPolicy(repositoryId, convert(properties), folderId, policies, convert(addACEs),
                     convert(removeACEs), portExtension, objectId);
@@ -182,8 +182,8 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(CmisVersion.CMIS_1_1, "");
 
         try {
-            javax.xml.ws.Holder<String> objectId = new javax.xml.ws.Holder<String>();
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<String> objectId = new jakarta.xml.ws.Holder<String>();
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.createItem(repositoryId, convert(properties), folderId, convert(addACEs), convert(removeACEs),
                     portExtension, objectId);
@@ -206,8 +206,8 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(getCmisVersion(repositoryId), "createRelationship");
 
         try {
-            javax.xml.ws.Holder<String> objectId = new javax.xml.ws.Holder<String>();
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<String> objectId = new jakarta.xml.ws.Holder<String>();
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.createRelationship(repositoryId, convert(properties), policies, convert(addACEs), convert(removeACEs),
                     portExtension, objectId);
@@ -230,10 +230,10 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(getCmisVersion(repositoryId), "updateProperties");
 
         try {
-            javax.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
-            javax.xml.ws.Holder<String> portChangeToken = getSession().get(SessionParameter.OMIT_CHANGE_TOKENS, false) ? null
+            jakarta.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
+            jakarta.xml.ws.Holder<String> portChangeToken = getSession().get(SessionParameter.OMIT_CHANGE_TOKENS, false) ? null
                     : convertHolder(changeToken);
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.updateProperties(repositoryId, portObjectId, portChangeToken, convert(properties), portExtension);
 
@@ -260,8 +260,8 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(CmisVersion.CMIS_1_1, "bulkUpdateProperties");
 
         try {
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
-            javax.xml.ws.Holder<CmisObjectIdAndChangeTokenType> bulkUpdateResponse = new javax.xml.ws.Holder<CmisObjectIdAndChangeTokenType>();
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<CmisObjectIdAndChangeTokenType> bulkUpdateResponse = new jakarta.xml.ws.Holder<CmisObjectIdAndChangeTokenType>();
 
             port.bulkUpdateProperties(repositoryId,
                     convert(objectIdAndChangeToken, properties, addSecondaryTypeIds, removeSecondaryTypeIds),
@@ -289,7 +289,7 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(getCmisVersion(repositoryId), "deleteObject");
 
         try {
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.deleteObject(repositoryId, objectId, allVersions, portExtension);
 
@@ -446,8 +446,8 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(getCmisVersion(repositoryId), "moveObject");
 
         try {
-            javax.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.moveObject(repositoryId, portObjectId, targetFolderId, sourceFolderId, portExtension);
 
@@ -468,10 +468,10 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(getCmisVersion(repositoryId), "setContentStream");
 
         try {
-            javax.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
-            javax.xml.ws.Holder<String> portChangeToken = getSession().get(SessionParameter.OMIT_CHANGE_TOKENS, false) ? null
+            jakarta.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
+            jakarta.xml.ws.Holder<String> portChangeToken = getSession().get(SessionParameter.OMIT_CHANGE_TOKENS, false) ? null
                     : convertHolder(changeToken);
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.setContentStream(repositoryId, portObjectId, overwriteFlag, portChangeToken,
                     convert(contentStream, false), portExtension);
@@ -494,10 +494,10 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(getCmisVersion(repositoryId), "deleteContentStream");
 
         try {
-            javax.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
-            javax.xml.ws.Holder<String> portChangeToken = getSession().get(SessionParameter.OMIT_CHANGE_TOKENS, false) ? null
+            jakarta.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
+            jakarta.xml.ws.Holder<String> portChangeToken = getSession().get(SessionParameter.OMIT_CHANGE_TOKENS, false) ? null
                     : convertHolder(changeToken);
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.deleteContentStream(repositoryId, portObjectId, portChangeToken, portExtension);
 
@@ -523,10 +523,10 @@ public class ObjectServiceImpl extends AbstractWebServicesService implements Obj
         ObjectServicePort port = portProvider.getObjectServicePort(CmisVersion.CMIS_1_1, "appendContentStream");
 
         try {
-            javax.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
-            javax.xml.ws.Holder<String> portChangeToken = getSession().get(SessionParameter.OMIT_CHANGE_TOKENS, false) ? null
+            jakarta.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
+            jakarta.xml.ws.Holder<String> portChangeToken = getSession().get(SessionParameter.OMIT_CHANGE_TOKENS, false) ? null
                     : convertHolder(changeToken);
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.appendContentStream(repositoryId, portObjectId, isLastChunk, portChangeToken,
                     convert(contentStream, false), portExtension);

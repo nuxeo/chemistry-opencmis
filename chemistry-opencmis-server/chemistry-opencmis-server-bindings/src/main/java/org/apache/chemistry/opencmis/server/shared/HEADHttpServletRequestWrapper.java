@@ -20,7 +20,7 @@ package org.apache.chemistry.opencmis.server.shared;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 public class HEADHttpServletRequestWrapper extends QueryStringHttpServletRequestWrapper {
 

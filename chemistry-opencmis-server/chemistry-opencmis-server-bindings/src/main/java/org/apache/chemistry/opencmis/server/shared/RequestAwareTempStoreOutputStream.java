@@ -18,7 +18,7 @@
  */
 package org.apache.chemistry.opencmis.server.shared;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.chemistry.opencmis.commons.server.TempStoreOutputStream;
 

@@ -24,11 +24,11 @@ import static org.apache.chemistry.opencmis.commons.impl.WSConverter.setHolderVa
 
 import java.math.BigInteger;
 
-import javax.annotation.Resource;
-import javax.jws.WebService;
-import javax.xml.ws.Holder;
-import javax.xml.ws.WebServiceContext;
-import javax.xml.ws.soap.MTOM;
+import jakarta.annotation.Resource;
+import jakarta.jws.WebService;
+import jakarta.xml.ws.Holder;
+import jakarta.xml.ws.WebServiceContext;
+import jakarta.xml.ws.soap.MTOM;
 
 import org.apache.chemistry.opencmis.commons.data.ObjectList;
 import org.apache.chemistry.opencmis.commons.enums.CmisVersion;

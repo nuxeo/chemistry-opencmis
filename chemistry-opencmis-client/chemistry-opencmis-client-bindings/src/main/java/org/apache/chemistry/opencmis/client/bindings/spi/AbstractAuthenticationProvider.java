@@ -24,7 +24,8 @@ import java.util.Map;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
-import javax.xml.ws.handler.HandlerResolver;
+
+import jakarta.xml.ws.handler.HandlerResolver;
 
 import org.apache.chemistry.opencmis.commons.SessionParameter;
 import org.w3c.dom.Element;

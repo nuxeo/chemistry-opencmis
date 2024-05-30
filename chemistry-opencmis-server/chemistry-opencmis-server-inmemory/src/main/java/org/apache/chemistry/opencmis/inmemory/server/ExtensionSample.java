@@ -18,7 +18,7 @@
  */
 package org.apache.chemistry.opencmis.inmemory.server;
 
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;
 
 @XmlType(name = "cmisExtensionType", propOrder = { "s", "i", "f" })
 public class ExtensionSample {

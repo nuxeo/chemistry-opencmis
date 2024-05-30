@@ -21,11 +21,11 @@ package org.apache.chemistry.opencmis.server.async.impl;
 import java.io.IOException;
 import java.util.concurrent.RejectedExecutionException;
 
-import javax.servlet.AsyncContext;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.AsyncContext;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.chemistry.opencmis.commons.exceptions.CmisServiceUnavailableException;
 import org.apache.chemistry.opencmis.commons.server.CmisServiceFactory;
