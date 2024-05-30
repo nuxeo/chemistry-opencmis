@@ -54,7 +54,7 @@ Add to your pom project :
 		<artifactId>annotations</artifactId>
 	</dependency>
 	<dependency>
-		<groupId>org.apache.chemistry.opencmis</groupId>
+		<groupId>org.nuxeo.chemistry.opencmis</groupId>
 		<artifactId>chemistry-opencmis-android-client</artifactId>
 		<version>x.z.y</version>
 		<exclusions>
