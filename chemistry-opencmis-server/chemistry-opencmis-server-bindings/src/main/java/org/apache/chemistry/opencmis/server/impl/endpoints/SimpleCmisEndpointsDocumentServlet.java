@@ -20,10 +20,10 @@ package org.apache.chemistry.opencmis.server.impl.endpoints;
 
 import java.io.InputStream;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.chemistry.opencmis.commons.endpoints.CmisEndpointsDocument;
 import org.apache.chemistry.opencmis.commons.impl.IOUtils;

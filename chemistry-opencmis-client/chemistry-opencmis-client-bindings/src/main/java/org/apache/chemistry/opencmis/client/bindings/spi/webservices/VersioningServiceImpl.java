@@ -64,9 +64,9 @@ public class VersioningServiceImpl extends AbstractWebServicesService implements
         VersioningServicePort port = portProvider.getVersioningServicePort(getCmisVersion(repositoryId), "checkOut");
 
         try {
-            javax.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
-            javax.xml.ws.Holder<Boolean> portContentCopied = new javax.xml.ws.Holder<Boolean>();
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
+            jakarta.xml.ws.Holder<Boolean> portContentCopied = new jakarta.xml.ws.Holder<Boolean>();
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.checkOut(repositoryId, portObjectId, portExtension, portContentCopied);
 
@@ -88,7 +88,7 @@ public class VersioningServiceImpl extends AbstractWebServicesService implements
                 "cancelCheckOut");
 
         try {
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.cancelCheckOut(repositoryId, objectId, portExtension);
 
@@ -109,8 +109,8 @@ public class VersioningServiceImpl extends AbstractWebServicesService implements
         VersioningServicePort port = portProvider.getVersioningServicePort(getCmisVersion(repositoryId), "checkIn");
 
         try {
-            javax.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<String> portObjectId = convertHolder(objectId);
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.checkIn(repositoryId, portObjectId, major, convert(properties), convert(contentStream, false),
                     checkinComment, policies, convert(addACEs), convert(removeACEs), portExtension);

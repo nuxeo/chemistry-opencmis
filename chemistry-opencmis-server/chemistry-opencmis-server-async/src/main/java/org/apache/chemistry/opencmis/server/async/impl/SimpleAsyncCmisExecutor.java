@@ -24,7 +24,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import javax.servlet.AsyncContext;
+import jakarta.servlet.AsyncContext;
 
 import org.apache.chemistry.opencmis.server.async.AsyncCmisExecutor;
 

@@ -18,8 +18,8 @@
  */
 package org.apache.chemistry.opencmis.server.impl.webservices;
 
-import javax.jws.WebService;
-import javax.xml.bind.annotation.XmlSeeAlso;
+import jakarta.jws.WebService;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
 
 import org.apache.chemistry.opencmis.commons.impl.jaxb.ObjectFactory;
 import org.apache.chemistry.opencmis.commons.impl.jaxb.RepositoryServicePort;

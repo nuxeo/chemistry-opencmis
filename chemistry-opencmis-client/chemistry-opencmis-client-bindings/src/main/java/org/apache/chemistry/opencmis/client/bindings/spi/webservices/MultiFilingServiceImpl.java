@@ -21,7 +21,7 @@ package org.apache.chemistry.opencmis.client.bindings.spi.webservices;
 import static org.apache.chemistry.opencmis.commons.impl.WSConverter.convertExtensionHolder;
 import static org.apache.chemistry.opencmis.commons.impl.WSConverter.setExtensionValues;
 
-import javax.xml.ws.Holder;
+import jakarta.xml.ws.Holder;
 
 import org.apache.chemistry.opencmis.client.bindings.spi.BindingSession;
 import org.apache.chemistry.opencmis.commons.data.ExtensionsData;

@@ -197,7 +197,7 @@ public class RepositoryServiceImpl extends AbstractWebServicesService implements
         RepositoryServicePort port = portProvider.getRepositoryServicePort(CmisVersion.CMIS_1_1, "createType");
 
         try {
-            javax.xml.ws.Holder<CmisTypeDefinitionType> typeDef = new javax.xml.ws.Holder<CmisTypeDefinitionType>(
+            jakarta.xml.ws.Holder<CmisTypeDefinitionType> typeDef = new jakarta.xml.ws.Holder<CmisTypeDefinitionType>(
                     convert(type));
 
             port.createType(repositoryId, typeDef, convert(extension));
@@ -221,7 +221,7 @@ public class RepositoryServiceImpl extends AbstractWebServicesService implements
         RepositoryServicePort port = portProvider.getRepositoryServicePort(CmisVersion.CMIS_1_1, "updateType");
 
         try {
-            javax.xml.ws.Holder<CmisTypeDefinitionType> typeDef = new javax.xml.ws.Holder<CmisTypeDefinitionType>(
+            jakarta.xml.ws.Holder<CmisTypeDefinitionType> typeDef = new jakarta.xml.ws.Holder<CmisTypeDefinitionType>(
                     convert(type));
 
             port.updateType(repositoryId, typeDef, convert(extension));
@@ -245,7 +245,7 @@ public class RepositoryServiceImpl extends AbstractWebServicesService implements
         RepositoryServicePort port = portProvider.getRepositoryServicePort(CmisVersion.CMIS_1_1, "deleteType");
 
         try {
-            javax.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
+            jakarta.xml.ws.Holder<CmisExtensionType> portExtension = convertExtensionHolder(extension);
 
             port.deleteType(repositoryId, typeId, portExtension);
 

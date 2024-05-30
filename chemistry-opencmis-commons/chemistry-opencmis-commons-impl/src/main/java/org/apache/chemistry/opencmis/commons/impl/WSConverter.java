@@ -39,12 +39,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.ParserConfigurationException;
+
+import jakarta.activation.DataHandler;
+import jakarta.activation.DataSource;
 
 import org.apache.chemistry.opencmis.commons.data.Ace;
 import org.apache.chemistry.opencmis.commons.data.Acl;
@@ -775,7 +776,7 @@ public final class WSConverter {
             result.setTypeMutability(target);
         }
 
-        for (CmisPropertyDefinitionType propertyDefinition : typeDefinition.getPropertyDefinition()) {
+        for (CmisPropertyDefinitionType propertyDefinition : typeDefinition.getPropertyBooleanDefinitionOrPropertyDateTimeDefinitionOrPropertyDecimalDefinition()) {
             result.addPropertyDefinition(convert(propertyDefinition));
         }
 
@@ -1011,7 +1012,7 @@ public final class WSConverter {
 
         if (typeDefinition.getPropertyDefinitions() != null) {
             for (PropertyDefinition<?> propDef : typeDefinition.getPropertyDefinitions().values()) {
-                result.getPropertyDefinition().add(convert(propDef));
+                result.getPropertyBooleanDefinitionOrPropertyDateTimeDefinitionOrPropertyDecimalDefinition().add(convert(propDef));
             }
         }
 
@@ -1648,7 +1649,7 @@ public final class WSConverter {
 
         PropertiesImpl result = new PropertiesImpl();
 
-        for (CmisProperty property : properties.getProperty()) {
+        for (CmisProperty property : properties.getPropertyBooleanOrPropertyIdOrPropertyInteger()) {
             result.addProperty(convert(property));
         }
 
@@ -1715,7 +1716,7 @@ public final class WSConverter {
 
         if (properties.getProperties() != null) {
             for (PropertyData<?> property : properties.getPropertyList()) {
-                result.getProperty().add(convert(property));
+                result.getPropertyBooleanOrPropertyIdOrPropertyInteger().add(convert(property));
             }
         }
 
@@ -2813,12 +2814,12 @@ public final class WSConverter {
     /**
      * Converts a binding extension into a Web Services extension holder.
      */
-    public static javax.xml.ws.Holder<CmisExtensionType> convertExtensionHolder(ExtensionsData extension) {
+    public static jakarta.xml.ws.Holder<CmisExtensionType> convertExtensionHolder(ExtensionsData extension) {
         if (extension == null) {
             return null;
         }
 
-        javax.xml.ws.Holder<CmisExtensionType> result = new javax.xml.ws.Holder<CmisExtensionType>();
+        jakarta.xml.ws.Holder<CmisExtensionType> result = new jakarta.xml.ws.Holder<CmisExtensionType>();
         result.value = convert(extension);
 
         return result;
@@ -2827,7 +2828,7 @@ public final class WSConverter {
     /**
      * Copies a holder value.
      */
-    public static void setExtensionValues(javax.xml.ws.Holder<CmisExtensionType> source, ExtensionsData target) {
+    public static void setExtensionValues(jakarta.xml.ws.Holder<CmisExtensionType> source, ExtensionsData target) {
         if (target == null) {
             return;
         }
@@ -2850,7 +2851,7 @@ public final class WSConverter {
     /**
      * Converts a Web Services extension extension into a binding holder.
      */
-    public static ExtensionsData convertExtensionHolder(javax.xml.ws.Holder<CmisExtensionType> extension) {
+    public static ExtensionsData convertExtensionHolder(jakarta.xml.ws.Holder<CmisExtensionType> extension) {
         if (extension == null) {
             return null;
         }
@@ -2861,7 +2862,7 @@ public final class WSConverter {
     /**
      * Copies a holder value.
      */
-    public static void setExtensionValues(ExtensionsData source, javax.xml.ws.Holder<CmisExtensionType> target) {
+    public static void setExtensionValues(ExtensionsData source, jakarta.xml.ws.Holder<CmisExtensionType> target) {
         if ((target == null) || (target.value == null)) {
             return;
         }
@@ -2881,12 +2882,12 @@ public final class WSConverter {
     /**
      * Converts a holder into a WS holder.
      */
-    public static <T> javax.xml.ws.Holder<T> convertHolder(Holder<T> orgHolder) {
+    public static <T> jakarta.xml.ws.Holder<T> convertHolder(Holder<T> orgHolder) {
         if (orgHolder == null) {
             return null;
         }
 
-        javax.xml.ws.Holder<T> result = new javax.xml.ws.Holder<T>();
+        jakarta.xml.ws.Holder<T> result = new jakarta.xml.ws.Holder<T>();
         result.value = orgHolder.getValue();
 
         return result;
@@ -2895,7 +2896,7 @@ public final class WSConverter {
     /**
      * Converts a WS holder into a holder.
      */
-    public static <T> Holder<T> convertHolder(javax.xml.ws.Holder<T> orgHolder) {
+    public static <T> Holder<T> convertHolder(jakarta.xml.ws.Holder<T> orgHolder) {
         if (orgHolder == null) {
             return null;
         }
@@ -2909,7 +2910,7 @@ public final class WSConverter {
     /**
      * Copies a holder value for a WS holder to a holder.
      */
-    public static <T> void setHolderValue(javax.xml.ws.Holder<T> source, Holder<T> target) {
+    public static <T> void setHolderValue(jakarta.xml.ws.Holder<T> source, Holder<T> target) {
         if ((source == null) || (target == null)) {
             return;
         }
@@ -2920,7 +2921,7 @@ public final class WSConverter {
     /**
      * Copies a holder value for a holder to a WS holder.
      */
-    public static <T> void setHolderValue(Holder<T> source, javax.xml.ws.Holder<T> target) {
+    public static <T> void setHolderValue(Holder<T> source, jakarta.xml.ws.Holder<T> target) {
         if ((source == null) || (target == null)) {
             return;
         }

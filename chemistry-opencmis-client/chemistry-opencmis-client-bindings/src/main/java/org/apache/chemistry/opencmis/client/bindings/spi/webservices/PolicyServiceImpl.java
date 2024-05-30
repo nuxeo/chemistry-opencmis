@@ -25,7 +25,7 @@ import static org.apache.chemistry.opencmis.commons.impl.WSConverter.setExtensio
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.ws.Holder;
+import jakarta.xml.ws.Holder;
 
 import org.apache.chemistry.opencmis.client.bindings.spi.BindingSession;
 import org.apache.chemistry.opencmis.commons.data.ExtensionsData;

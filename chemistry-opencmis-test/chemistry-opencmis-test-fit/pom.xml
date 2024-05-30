@@ -35,8 +35,8 @@
 
     <properties>
         <parentBasedir>../../</parentBasedir>
-        <tomcat.version>8.5.31</tomcat.version>
-        <tomcat.juli.version>8.5.2</tomcat.juli.version>
+        <tomcat.version>10.0.27</tomcat.version>
+        <tomcat.juli.version>10.0.27</tomcat.juli.version>
         <overlay.groupId />
         <overlay.artifactId />
         <factory.class />
@@ -164,8 +164,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-logging-juli</artifactId>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-juli</artifactId>
             <version>${tomcat.juli.version}</version>
             <scope>test</scope>
         </dependency>

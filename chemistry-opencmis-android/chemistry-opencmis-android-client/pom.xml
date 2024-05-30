@@ -51,9 +51,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <version>2.0.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -122,7 +122,7 @@
                                     </fileset>
                                 </copy>
 								
-                                <replace dir="${gendir}" token="javax.xml.ws.handler.HandlerResolver" value="org.apache.chemistry.opencmis.client.bindings.spi.HandlerResolver" />            
+                                <replace dir="${gendir}" token="jakarta.xml.ws.handler.HandlerResolver" value="org.apache.chemistry.opencmis.client.bindings.spi.HandlerResolver" />
                             </target>
                         </configuration>
                         <goals>

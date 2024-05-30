@@ -58,8 +58,8 @@ public class DiscoveryServiceImpl extends AbstractWebServicesService implements 
                 "getContentChanges");
 
         try {
-            javax.xml.ws.Holder<String> portChangeLokToken = convertHolder(changeLogToken);
-            javax.xml.ws.Holder<CmisObjectListType> portObjects = new javax.xml.ws.Holder<CmisObjectListType>();
+            jakarta.xml.ws.Holder<String> portChangeLokToken = convertHolder(changeLogToken);
+            jakarta.xml.ws.Holder<CmisObjectListType> portObjects = new jakarta.xml.ws.Holder<CmisObjectListType>();
 
             port.getContentChanges(repositoryId, portChangeLokToken, includeProperties, filter, includePolicyIds,
                     includeACL, maxItems, convert(extension), portObjects);

@@ -29,8 +29,9 @@ import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.soap.MTOMFeature;
+
+import jakarta.xml.ws.BindingProvider;
+import jakarta.xml.ws.soap.MTOMFeature;
 
 import org.apache.chemistry.opencmis.client.bindings.impl.CmisBindingsHelper;
 import org.apache.chemistry.opencmis.commons.SessionParameter;

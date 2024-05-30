@@ -20,7 +20,7 @@ package org.apache.chemistry.opencmis.server.impl.webservices;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.chemistry.opencmis.server.shared.CallContextHandler;
 import org.apache.cxf.binding.soap.SoapMessage;
