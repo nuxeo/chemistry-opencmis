@@ -183,6 +183,8 @@ public abstract class AbstractTckIT extends AbstractRunner {
         while (count > 0) {
             count--;
             if (tomcat.getServer().getState() == LifecycleState.STARTED) {
+                // retrieve connector to finish Tomcat startup
+                tomcat.getConnector();
                 break;
             }
             Thread.sleep(500);
