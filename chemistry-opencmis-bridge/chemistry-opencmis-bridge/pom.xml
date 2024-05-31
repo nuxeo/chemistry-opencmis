@@ -101,8 +101,8 @@
         </dependency>
         <!-- copy the dependencies from the server bindings here, because mvn eclipse ignores them from a .war -->
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
     </dependencies>
 
