@@ -35,8 +35,6 @@
 
     <properties>
         <parentBasedir>../../</parentBasedir>
-        <tomcat.version>8.5.31</tomcat.version>
-        <tomcat.juli.version>8.5.2</tomcat.juli.version>
         <overlay.groupId />
         <overlay.artifactId />
         <factory.class />
@@ -154,32 +152,23 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>chemistry-opencmis-test-tck</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <!-- Test -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-logging-juli</artifactId>
-            <version>${tomcat.juli.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-jul</artifactId>
-            <version>${log4j.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -205,7 +194,6 @@
                 <dependency>
                     <groupId>${project.groupId}</groupId>
                     <artifactId>chemistry-opencmis-server-inmemory</artifactId>
-                    <version>${project.version}</version>
                     <type>war</type>
                 </dependency>
             </dependencies>

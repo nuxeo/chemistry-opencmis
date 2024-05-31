@@ -46,31 +46,26 @@
         <dependency>
             <artifactId>chemistry-opencmis-client-impl</artifactId>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <artifactId>chemistry-opencmis-client-api</artifactId>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <artifactId>chemistry-opencmis-client-bindings</artifactId>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <artifactId>chemistry-opencmis-commons-api</artifactId>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <artifactId>chemistry-opencmis-commons-impl</artifactId>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Used for server-assembly.xml -->
@@ -78,14 +73,12 @@
         <dependency>
             <artifactId>chemistry-opencmis-server-bindings-war</artifactId>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
-            <version>${project.version}</version>
             <type>war</type>
         </dependency>
 
         <dependency>
             <artifactId>chemistry-opencmis-server-support</artifactId>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Used for server-webapps-assembly.xml -->
@@ -93,21 +86,18 @@
         <dependency>
             <artifactId>chemistry-opencmis-server-fileshare</artifactId>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
-            <version>${project.version}</version>
             <type>war</type>
         </dependency>
 
         <dependency>
             <artifactId>chemistry-opencmis-server-inmemory</artifactId>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
-            <version>${project.version}</version>
             <type>war</type>
         </dependency>
  
          <dependency>
             <artifactId>chemistry-opencmis-osgi-client</artifactId>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
-            <version>${project.version}</version>
         </dependency>
 
     </dependencies>
