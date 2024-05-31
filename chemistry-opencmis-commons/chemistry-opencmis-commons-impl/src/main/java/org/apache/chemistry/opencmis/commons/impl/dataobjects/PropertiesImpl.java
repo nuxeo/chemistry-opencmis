@@ -81,7 +81,7 @@ public class PropertiesImpl extends AbstractExtensionData implements MutableProp
         return Collections.unmodifiableList(propertyList);
     }
 
-    private void addProperties(Collection<PropertyData<?>> properties) {
+    protected void addProperties(Collection<PropertyData<?>> properties) {
         if (properties != null) {
             for (PropertyData<?> prop : properties) {
                 addProperty(prop);
@@ -93,10 +93,6 @@ public class PropertiesImpl extends AbstractExtensionData implements MutableProp
     public void addProperty(PropertyData<?> property) {
         if (property == null) {
             return;
-        }
-
-        if (properties.containsKey(property.getId())) {
-            throw new IllegalArgumentException("Property '" + property.getId() + "' already added.");
         }
 
         propertyList.add(property);
