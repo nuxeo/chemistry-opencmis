@@ -77,40 +77,32 @@
             <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>chemistry-opencmis-commons-api</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.nuxeo.chemistry.opencmis</groupId>
             <artifactId>chemistry-opencmis-commons-impl</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>chemistry-opencmis-client-bindings</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>chemistry-opencmis-server-support</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>chemistry-opencmis-server-bindings-war</artifactId>
-            <version>${project.version}</version>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.4</version>
-            <scope>provided</scope>
         </dependency>
         <!-- copy the dependencies from the server bindings here, because mvn eclipse ignores them from a .war -->
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
         </dependency>
     </dependencies>
 

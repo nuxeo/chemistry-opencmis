@@ -51,8 +51,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>${felix.plugin.version}</version>
-                <extensions>true</extensions>
                 <executions>
                     <execution>
                         <id>bundle-manifest</id>
@@ -79,7 +77,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>chemistry-opencmis-commons-api</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
